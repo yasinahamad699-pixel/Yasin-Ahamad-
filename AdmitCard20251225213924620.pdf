@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><meta content="width=device-width, initial-scale=1.0" name="viewport" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" /><title>
+	RTU
+</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <style>
+        .brdcums {
+            background: #E8F1F8;
+            width: 98%;
+            float: left;
+            padding: 5px 1%;
+            color: #000;
+        }
+         .brdcums span {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+         .brdcums span:hover {
+                 text-decoration: none;
+         }
+    </style>
+    <script> 
+        function burstCache() {
+            if (!navigator.onLine) {
+                document.body.innerHTML = 'Offline Viewing not Allowed...pls be online.';
+                window.location = '~/ErrorPage.html';
+            }
+        }
+        function ShowSearchmaster(obj) {
+            document.getElementById('lightbookmaster').style.display = 'block';
+        }
+        function HideSearchmaster(obj) {
+            document.getElementById('lightbookmaster').style.display = 'none';
+        }
+        function checkscript() {
+            var evtobj = window.event ? event : e
+            if (evtobj.shiftKey) {
+                if (evtobj.keyCode == 188 || evtobj.keyCode == 190 || evtobj.keyCode == 222) {
+                    return false;
+                }
+            }
+
+            //            if (event.keyCode == 222) {
+            //                document.form1.outstring.value = """";
+            //            }            
+
+        }
+
+    </script>
+    <script>
+        var isClose = false;
+
+        //this code will handle the F5 or Ctrl+F5 key
+        //need to handle more cases like ctrl+R whose codes are not listed here
+        document.onkeydown = checkKeycode
+        function checkKeycode(e) {
+            var keycode;
+            if (window.event)
+                keycode = window.event.keyCode;
+            else if (e)
+                keycode = e.which;
+            if (keycode == 116) {
+                isClose = true;
+            }
+        }
+        function somefunction() {
+            isClose = true;
+        }
+
+        //<![CDATA[
+
+        function bodyUnload() {
+
+            if (!isClose) {
+                var request = GetRequest();
+                request.open("GET", "~/Logout.aspx", true);
+                request.send();
+            }
+        }
+        function GetRequest() {
+            var request = null;
+            if (window.XMLHttpRequest) {
+                //incase of IE7,FF, Opera and Safari browser
+                request = new XMLHttpRequest();
+            }
+            else {
+                //for old browser like IE 6.x and IE 5.x
+                request = new ActiveXObject('MSXML2.XMLHTTP.3.0');
+            }
+            return request;
+        }
+        //
+    </script>
+<link href="../../App_Themes/skyblue/default.css" type="text/css" rel="stylesheet" /><link href="../../App_Themes/skyblue/GridviewScroll.css" type="text/css" rel="stylesheet" /><link href="../../App_Themes/skyblue/stylesheet.css" type="text/css" rel="stylesheet" /></head>
+<body class="backgroundmaster" onload="burstCache();" onkeydown="return checkscript();"
+    onbeforeunload="bodyUnload();" onmousedown="somefunction()">
+    <form name="aspnetForm" method="post" action="./Download_AdmitCard.aspx" id="aspnetForm" autocomplete="off">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="bRRLnrgvlZTvjKrGhSoSdD6ogbnDMWi+tKE4C7j+a6uamKgg5QmglhueLTNNg3LCzb2X0cfmJsdNgs6afOWh5Ndp8w7SHYhlGk+r5lvu+am0F27d6xrLqKuYgUJHNlC4ukeu9quxrnEGjVFswROUZnXgOt7qnpBLsvsnmyL9rIqUlhAiGFxND/ik+GQIPrTV3Cx+La1gqCcMUXEi6oWjdvcFzY58v2JZWXSTTGT57jD35TnFTZkcyuemUjWTp0r8N9RUYLoWYhbMVLMvLAQjI/qYL5yhF9aqzaE0VXhiqP9WBRcYzElJjy06cuRgt9hryqCycNbdRrM6OXhdYONDeU/6NI0VGLg7/H1jbERjlc22mZ55GuQNvlLhbmnWbWRzHHXkg3uYOb5hOHE1Y+iMvnvLD47rWa9Hr8uXGf7eJyfby8cB53d8syxx8P7aX1jrUDEbQWKXZCrRolscjErOXfSvllfzfo2ygsnQO9ArmcSwWsEwFqKgIs1q3KZupjUpPox/mu88T5SYGHEt7VzzkjYHLBSiz2ZZSM2xBKw/W2MWtXytuEog9Qc60VBle4/3JqkjRNjGErDOeh8DgwtCBk6qYIUQAq+hG5xDFR/gT2f7ULVdVBTGGeEJb9uORnQLwpHP+ujEEibKUqlSnGMUseFQ1iH881Z1pu+0oMjI1Yuewl3YvsBdRiN7Xf4v00OXI6+F0AKVpEgk73jDeLZl9DKR1iUpcP96ut0EyFjngZn7xz8ETJHyu2mflI+IVmktsIkNm50XlF0ZaknL7nRk0fyTaApjOZvhe/rWLaVkYjWa9Qel++HeSd0W2tG2hFpNWUb7HZa1idWDkl1PyksAORRewUHuy8EBTHVSxv5hUu/cZn8MV2WJcmjYt+NeWYa4SNy1C0MVg4ayHTWaTnMzSiWdZs3OjG0FCHHaRTJAtevSEDaEHyg1+bnXJHOSV3FsSety/b5uJzD5HEpwkzditFwll1M+v/X2190jy8z8Hj9NmlbDYnR91UEIlEeg7S3mgj5F4UDX3LweMLCTlkG1lwzLZnqqSxAQH3Gd041HUR4cs8+QX3Pzw4um4c+Wd9GPd6YKRqIakWnfEnDrNrWiAq33CtIfN9Fb8hb/zwF9fScCo836hYdfrl8rFcJjHBPWD0iBencHBswCSpYGxUEv6pTxMx4=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZLpsGiQWJm4q4S0nrN41DBHCfZs1j4ui1QcvbegECjQ0cfyS3A2&amp;t=638562760700000000" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+var Anthem_FormID = "aspnetForm";
+//]]>
+</script>
+<script src="/WebResource.axd?d=3aJe5EVz5a65qlRd-GY67iYoy7ojYTwR-tSd9c0CDsUmcHt1KR-yKVXNeH-qFlPglp1xPCQ8ZdH4bXP1PBxgFi4GWT01&amp;t=638113606840000000" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=nnHyWnZ5bTPuYszCeiYmKxh8OW8zFXMS_cJXUK7566-6ri_rcCW-mJv2eFQuKiqK2zAeihiW3TRYcacHeQZ9j05W-8mPI4ZUBl07-_2o_Sl1GS5JAKvqD_cx5H84eImd-s3Xyvpn_R-NxPKvfRJO5BhpruU1&amp;t=7a0cc936" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=geiJw278ELCE4oVrRV2zH_BLE9GVhkUb8P-cVrGSRb1moE0H-aL5hLODEONJX7Ffx46CpdaWPJhRbZowZW0sSNsnWa3-XyDKVxoDp-nsc-jQV_C38mmgCIqqwdMaKHrTeUBU8T-VJ8yj9enxRFzw29szo7ubZdkVq1ZwdVINgB7rwCrU0&amp;t=7a0cc936" type="text/javascript"></script>
+<script src="/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=10.0.40219.329&amp;Name=ViewerScript" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=IUhlmyaO1jJbGutwmKbYkIzFhefKq0HOkD7H3OMN742fzCOkgW7dhxG3FdvoHlLZZ9qTod5KdqUBjFbW_uOZD0M0SOE4r7hNcPolmvXliFXx2gs03oRZjTVEh_MK9MKk8BZ2ozfFvci6mI43mg9V958SBJI1&amp;t=7a0cc936" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="EA6D5239" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="cjlFbyt83+WvnqotfeWyUARlWkuQLbh0lMvSApJxHBxLANgqlQM+Axp59EiA5Lh5GudurtrABuQi8uWiOkHgbocZaewXTKarqAJFHIgfQha5KJ+uSNjNYr972F/46hCsiylqv6Y1KaIttfXy+5wA4QFy4Rh3ghSt5o/UU0tsbbQUTicYKCQdwgveq+3lhUHaIxyehInaZQ2QMCqQcDd75W2W+wzb2DepcdimHj3b2Inl0qoDUpPyE+NFwIAgxiqIEm0zvKJ1soD9gcek6InkmSS6IOrqWQY2EJxPvzPU6jTCObb5OkgbnhxY21/zvE56QI/meeQE+pgBA4GC9fABK2KS+ibXJmfre+Bc3ANmYVovBegn6kxTMnIr++lOGDFHcZHnSbHC0YlzNfi41E08dXX/FyTFnahAEUg0RHG1233YDxDa1pkKy7/5fanc7a+EokadjfWvCrIFdoY1jJffGolJCCZUA3Ff8xEz7oVaCr8g9fkPJ5M+Ygj6BPgm0MhCGK8w/5mtcUeldEQ61MWwzFrmZ96r9QUx9fnSvIU5zJVEBG0m" />
+</div>
+        <div class="maincontent">
+            <table border="0" cellpadding="0" cellspacing="0" class="master-border" width="100%">
+                <tr>
+                    <td valign="top">
+                        <div class="header" style="padding:5px;">
+                            <h1 class="logo">
+                                <img src="/App_Themes/skyblue/images/logo-white.png" /></h1>
+                            <table border="0" cellpadding="0" cellspacing="0" align="right" width="50%" class="glcl">
+                                <tr>
+                                    <td align="right" valign="top"></td>
+                                    <td align="right">
+                                        <div class="masterlogout-detail">
+                                            
+                                            
+                                        </div>
+                                    </td>
+                                    <!--
+                        <td>
+                                               
+                        </td>
+                        <td>
+                                           
+                        </td>
+                        -->
+                                    <td align="right"></td>
+                                    <td align="right"></td>
+                                    <td align="right">
+                                        <div class="masterlogout-detail">
+                                            <span id="Anthem_ctl00_linklogout__"><a onclick="javascript:Anthem_FireCallBackEvent(this,event,&#39;ctl00$linklogout&#39;,&#39;&#39;,true,&#39;&#39;,&#39;&#39;,&#39;&#39;,true,null,null,null,true,true);return false;" id="ctl00_linklogout" class="btn btn-sm btn-warning" href="javascript:__doPostBack(&#39;ctl00$linklogout&#39;,&#39;&#39;)">Logout</a></span>
+                                            
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div id="nav">
+                        </div>
+                        <div id="body">
+                           
+                            <div class="body-form">
+                                
+    <script type="text/javascript" language="javascript">
+        function chk(obj, str) {
+            //debugger;
+            var gv_Stationery = document.getElementById("ctl00_ContentPlaceHolder1_dgDetails");
+            var gv_Len = gv_Stationery.rows.length;
+
+            for (var i = 2; i <= gv_Len; i++) {
+                if (i < 10)
+                    document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl0" + i + str).checked = obj.checked;
+                else
+                    document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl" + i + str).checked = obj.checked;
+            }
+        }
+
+        function chkk(str) {
+            //debugger;
+            var gv_Stationery = document.getElementById("ctl00_ContentPlaceHolder1_dgDetails");
+            var gv_Len = gv_Stationery.rows.length;
+            var chk = 0;
+
+            for (var i = 2; i <= gv_Len; i++) {
+                if (i < 10) {
+                    if (document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl0" + i + str).checked == false)
+                        chk = 1;
+                }
+                else {
+                    if (document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl" + i + str).checked == false)
+                        chk = 1;
+                }
+            }
+
+            ctl00_ContentPlaceHolder1_gvStudent_ctl02_chkdtls
+
+            if (chk == 0)
+                document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl01_chkAll").checked = true;
+            else
+                document.getElementById("ctl00_ContentPlaceHolder1_dgDetails_ctl01_chkAll").checked = false;
+
+
+            //if (chk == 0)
+            //    document.getElementById("ctl00_ContentPlaceHolder1_grdsubmit_ctl01_chkDetailsHeader").checked = true;
+            //else
+            //    document.getElementById("ctl00_ContentPlaceHolder1_grdsubmit_ctl01_chkDetailsHeader").checked = false;
+
+        }
+
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ctl00', 'aspnetForm', ['fctl00$ContentPlaceHolder1$recieptviewer$ReportViewer','','fctl00$ContentPlaceHolder1$recieptviewer$DocMap','','fctl00$ContentPlaceHolder1$recieptviewer$ctl09$ReportArea',''], [], ['ctl00$ContentPlaceHolder1$recieptviewer$ctl09$ReportControl$ctl00',''], 90, 'ctl00');
+//]]>
+</script>
+
+    <table border="0" cellpadding="0" cellspacing="0" class="table" width="100%">
+        <tr style="width: 100%">
+            <td class="tableheading" colspan="3">ADMIT CARD</td>
+        </tr>
+          <tr>
+          <td colspan="3" class="tdgap" style="color: red; font-size:small"">
+          
+
+            </td>
+        </tr>
+        <tr>
+
+            <td class="vtext">Roll No. / EnrollmentNo*</td>
+            <td class="colon">:</td>
+            <td class="required">
+                <span id="Anthem_ctl00_ContentPlaceHolder1_txtRollNo__"><input name="ctl00$ContentPlaceHolder1$txtRollNo" type="text" maxlength="15" id="ctl00_ContentPlaceHolder1_txtRollNo" class="textbox" /></span>
+            </td>
+        </tr>
+         <tr>
+
+            <td class="vtext">Password*</td>
+            <td class="colon">:</td>
+            <td class="required">
+                <span id="Anthem_ctl00_ContentPlaceHolder1_txtfname__"><input name="ctl00$ContentPlaceHolder1$txtfname" type="password" maxlength="9" id="ctl00_ContentPlaceHolder1_txtfname" class="textbox" /></span>
+            </td>
+        </tr>
+        
+
+        <tr>
+            <td></td>
+            <td colspan="2" style="padding-left: 85px">
+
+                <span id="Anthem_ctl00_ContentPlaceHolder1_btnSearch__"><input type="submit" name="ctl00$ContentPlaceHolder1$btnSearch" value="SEARCH" id="ctl00_ContentPlaceHolder1_btnSearch" class="button-common" CellPadding="0" cellspacing="0" /></span>
+                <span id="Anthem_ctl00_ContentPlaceHolder1_btnReset__"><input type="submit" name="ctl00$ContentPlaceHolder1$btnReset" value="RESET" id="ctl00_ContentPlaceHolder1_btnReset" class="button-common" CellPadding="0" cellspacing="0" /></span>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
+            </td>
+            <td colspan="2">
+                <span id="ctl00_ContentPlaceHolder1_lblMsg" AutoUpdateAfterCallBack="true"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="tdgap" style="color: red; font-size:small; font-weight:bold">NOTE : First four characters of Father's name followed by "@" followed by first four characters of Mother's name. If there are any gaps between characters, use the trailing characters instead.<br />
+                (1)-If Father Name is AJAY KUMAR & Mother Name is SAVITRI DEVI then Password is "AJAY@SAVI".
+                <br />
+                (2)-If Father Name is JAI SINGH & Mother Name is SAVITRI DEVI then Password is "JAIS@SAVI".
+                 <br />
+                (3)-If Father Name is OM PRAKASH & Mother Name is SAVITRI DEVI then Password is "<a href="mailto:OMPR@SAVI">OMPR@SAVI</a>".
+                <br />
+                (4)-For UD Students Only. (In case if your Admit Card is not available, Kindly confirm if Continuity fees is paid.)</td>
+        </tr>
+        
+        <tr>
+            <td colspan="3">
+                <div id="Div1" class="DivStyleWithScroll" style="width: 100%; height: 189px;">
+                    <div id="Anthem_ctl00_ContentPlaceHolder1_dgDetails__"><div>
+
+</div></div>
+                </div>
+            </td>
+        </tr>
+        
+        
+    </table>
+
+    <noscript>
+	&nbsp;Your browser does not support scripts or has been configured not to allow scripts.
+</noscript><span id="ctl00_ContentPlaceHolder1_recieptviewer_ReportViewer"><div id="ctl00_ContentPlaceHolder1_recieptviewer" onclick="if ($get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;) != null &amp;&amp; $get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;).control != null) $get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;).control.HideActiveDropDown();" onactivate="if ($get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;) != null &amp;&amp; $get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;).control != null) $get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_ctl04&#39;).control.HideActiveDropDown();" style="height:0px;width:400px;">
+	<div id="ctl00_ContentPlaceHolder1_recieptviewer_HttpHandlerMissingErrorMessage" style="border-color:Red;border-width:2px;border-style:Solid;padding:10px;display:none;overflow:auto;font-size:.85em;">
+		<h2>
+			Report Viewer Configuration Error
+		</h2><p>The Report Viewer Web Control HTTP Handler has not been registered in the application&#39;s web.config file.  Add &lt;add verb=&quot;*&quot; path=&quot;Reserved.ReportViewerWebControl.axd&quot; type = &quot;Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&gt; to the system.web/httpHandlers section of the web.config file, or add &lt;add name=&quot;ReportViewerWebControlHandler&quot; preCondition=&quot;integratedMode&quot; verb=&quot;*&quot; path=&quot;Reserved.ReportViewerWebControl.axd&quot; type=&quot;Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&gt; to the system.webServer/handlers section for Internet Information Services 7 or later.</p>
+	</div><span id="ctl00_ContentPlaceHolder1_recieptviewer_ctl03"><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl03$ctl00" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl03_ctl00" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl03$ctl01" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl03_ctl01" /></span><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl10" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl10" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl11" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl11" /><div id="ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait" style="background-color:White;opacity:0.7;position:absolute;display:none;filter:alpha(opacity=70);">
+
+	</div><div id="ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait_Wait" style="cursor:wait;background-color:#ECE9D8;padding:15px;border:1px solid black;display:none;position:absolute;">
+		<table height="100%">
+			<tr>
+				<td width="32px" height="32px"><img src="/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=10.0.40219.329&amp;Name=Microsoft.Reporting.WebForms.Icons.SpinningWheel.gif" style="height:32px;width:32px;border-width:0px;" /></td><td style="vertical-align:middle;text-align:center;"><span style="font-family:Verdana;font-size:14pt;">Loading...</span><div style="margin-top:3px;">
+					<a href="javascript:$get(&#39;ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait&#39;).control._cancelCurrentPostback();" style="font-family:Verdana;font-size:8pt;color:#3366CC;">Cancel</a>
+				</div></td>
+			</tr>
+		</table>
+	</div><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$AsyncWait$HiddenCancelField" id="ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait_HiddenCancelField" value="False" /><table cellpadding="0" cellspacing="0" id="ctl00_ContentPlaceHolder1_recieptviewer_fixedTable" style="table-layout:fixed;width:100%;height:100%;">
+		<tr>
+			<td style="display:none;width:25%;"></td><td style="display:none;width:6px;"></td><td style="width:100%;"></td>
+		</tr><tr id="ParametersRowctl00_ContentPlaceHolder1_recieptviewer" style="display:none;">
+			<td colspan="3"></td>
+		</tr><tr style="height:6px;font-size:2pt;display:none;">
+			<td colspan="3" style="padding:0px;margin:0px;text-align:center;background-color:#ECE9D8;"><div id="ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam">
+				<input type="image" name="ctl00$ContentPlaceHolder1$recieptviewer$ToggleParam$img" id="ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_img" title="Show / Hide Parameters" src="/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=10.0.40219.329&amp;Name=Microsoft.Reporting.WebForms.Icons.SplitterHorizCollapse.png" alt="Show / Hide Parameters" align="middle" onclick="void(0);" style="border-width:0px;cursor:pointer;" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ToggleParam$store" id="ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_store" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ToggleParam$collapse" id="ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_collapse" value="false" />
+			</div></td>
+		</tr><tr style="display:none;">
+
+		</tr><tr>
+			<td style="vertical-align:top;width:25%;height:100%;display:none;"><div style="width:100%;height:100%;">
+				<span id="ctl00_ContentPlaceHolder1_recieptviewer_DocMap"><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl08" style="display:none;">
+					<input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl08$ClientClickedId" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl08_ClientClickedId" />
+				</div></span>
+			</div></td><td style="display:none;width:4px;padding:0px;margin:0px;height:100%;vertical-align:middle;background-color:#ECE9D8;"><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl07">
+				<input type="image" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl07$img" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl07_img" title="Show / Hide Document Map" src="/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=10.0.40219.329&amp;Name=Microsoft.Reporting.WebForms.Icons.SplitterVertCollapse.png" alt="Show / Hide Document Map" align="top" onclick="void(0);" style="border-width:0px;cursor:pointer;" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl07$store" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl07_store" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl07$collapse" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl07_collapse" value="false" />
+			</div></td><td style="height:100%;vertical-align:top;"><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09" style="height:100%;width:100%;overflow:auto;position:relative;">
+				<div id="VisibleReportContentctl00_ContentPlaceHolder1_recieptviewer_ctl09" style="height:100%;display:none;">
+
+				</div><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportArea">
+					<div NewContentType="Microsoft.Reporting.WebFormsClient.ReportAreaContent.None" ForNonReportContentArea="false" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_VisibilityState" style="visibility:none;">
+						<input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl09$VisibilityState$ctl00" value="None" />
+					</div><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl09$ScrollPosition" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ScrollPosition" /><span id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_Reserved_AsyncLoadTarget"></span><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl" style="display:none;">
+						<span></span><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl09$ReportControl$ctl02" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl09$ReportControl$ctl03" /><input type="hidden" name="ctl00$ContentPlaceHolder1$recieptviewer$ctl09$ReportControl$ctl04" id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl_ctl04" value="100" />
+					</div><div id="ctl00_ContentPlaceHolder1_recieptviewer_ctl09_NonReportContent" style="height:100%;width:100%;">
+
+					</div>
+				</div>
+			</div></td>
+		</tr>
+	</table>
+</div></span>
+    <iframe width="174" height="189" name="gToday:normal:agenda.js" id="gToday:normal:agenda.js"
+        src='/calendar/ipopeng.htm' scrolling="no" frameborder="0"
+        style="visibility: visible; z-index: 119; position: absolute; top: -500px; left: -500px;"></iframe>
+
+                            </div>
+                        </div>
+                        <span id="ctl00_lblCheck" class="HeadingRed"></span>
+
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="loginfooter"><a href="#" class=""></a></div>
+
+        <div id="lightbookmaster" class="grayout" style="display: none; top: 10%; height: auto;">
+            <div class="dvHelp">
+                <div onclick="document.getElementById('lightbookmaster').style.display='none';" class="closebtn">
+                    X
+                </div>
+                <div id="ctl00_dvHelp">
+                    <div class="helpheading">
+                        Help
+                    </div>
+                    
+                    The Context sensitive help will be activated  after final User Acceptance of respective IUMS Modules.
+                </div>
+            </div>
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    
+if (typeof Microsoft == 'undefined' ||
+    typeof Microsoft.Reporting == 'undefined' ||
+    typeof Microsoft.Reporting.WebFormsClient == 'undefined' ||
+    typeof Microsoft.Reporting.WebFormsClient.ReportViewer == 'undefined')
+    Sys.UI.DomElement.setVisible($get('ctl00_ContentPlaceHolder1_recieptviewer_HttpHandlerMissingErrorMessage'), true);
+    $create(Microsoft.Reporting.WebFormsClient.ReportViewer, {"_internalViewerId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl03","id":"ctl00_ContentPlaceHolder1_recieptviewer"}, null, null);
+});
+Sys.WebForms.PageRequestManager.getInstance()._registerDisposeScript("ctl00_ContentPlaceHolder1_recieptviewer_ReportViewer", "$find(\u0027ctl00_ContentPlaceHolder1_recieptviewer_SessionKeepAlive\u0027).dispose();");
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._InternalReportViewer, {"ActionParamId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl03_ctl01","ActionTypeId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl03_ctl00","BaseHeight":"0px","BaseWidth":"400px","BrowserModeId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl11","DirectionCacheId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl10","DocMapAreaId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl08","DocMapHeaderOverflowDivId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl08DocMapHeaderOverflowDiv","DocMapSplitterId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl07","FixedTableId":"ctl00_ContentPlaceHolder1_recieptviewer_fixedTable","HasSizingRow":true,"PostBackToClientScript":function(){__doPostBack('ctl00$ContentPlaceHolder1$recieptviewer$ctl03','');},"PromptAreaRowId":"ParametersRowctl00_ContentPlaceHolder1_recieptviewer","PromptSplitterId":"ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam","ReportAreaId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09","ReportViewerId":"ctl00_ContentPlaceHolder1_recieptviewer","UnableToLoadPrintMessage":"Unable to load client print control."}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_ctl03"));
+    $create(Microsoft.Reporting.WebFormsClient._SessionKeepAlive, {"KeepAliveBody":null,"KeepAliveIntervalSeconds":7140,"KeepAliveUrl":"/Reserved.ReportViewerWebControl.axd?OpType=SessionKeepAlive\u0026ControlID=67bce526b68f4c2380dd2f26cd944f1d","id":"ctl00_ContentPlaceHolder1_recieptviewer_SessionKeepAlive"}, null, null);
+});
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._AsyncWaitControl, {"ClientCanceledId":"ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait_HiddenCancelField","DisplayDelay":1000,"FixedTableId":"ctl00_ContentPlaceHolder1_recieptviewer_fixedTable","ReportViewerId":"ctl00_ContentPlaceHolder1_recieptviewer","SkipTimer":true,"TriggerIds":["ctl00_ContentPlaceHolder1_recieptviewer"],"WaitControlId":"ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait_Wait"}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_AsyncWait"));
+});
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._Splitter, {"HoverColor":"#DDEEF7","ImageCollapse":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterHorizCollapse.png","ImageCollapseHover":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterHorizCollapseHover.png","ImageExpand":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterHorizExpand.png","ImageExpandHover":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterHorizExpandHover.png","ImageId":"ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_img","IsCollapsable":true,"NormalColor":"#ECE9D8","Resizable":false,"StoreCollapseField":"ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_collapse","StorePositionField":"ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam_store","Vertical":false}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_ToggleParam"));
+});
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._Splitter, {"HoverColor":"#DDEEF7","ImageCollapse":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterVertCollapse.png","ImageCollapseHover":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterVertCollapseHover.png","ImageExpand":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterVertExpand.png","ImageExpandHover":"/Reserved.ReportViewerWebControl.axd?OpType=Resource\u0026Version=10.0.40219.329\u0026Name=Microsoft.Reporting.WebForms.Icons.SplitterVertExpandHover.png","ImageId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl07_img","IsCollapsable":true,"NormalColor":"#ECE9D8","Resizable":true,"StoreCollapseField":"ctl00_ContentPlaceHolder1_recieptviewer_ctl07_collapse","StorePositionField":"ctl00_ContentPlaceHolder1_recieptviewer_ctl07_store","Vertical":true}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_ctl07"));
+});
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._ReportArea, {"NonReportContentId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_NonReportContent","ReportAreaVisibilityStateId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_VisibilityState","ReportControlId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl","ScrollPositionId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ScrollPosition","VisibleReportContentContainerId":"VisibleReportContentctl00_ContentPlaceHolder1_recieptviewer_ctl09"}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_ctl09"));
+});
+Sys.Application.add_init(function() {
+    $create(Microsoft.Reporting.WebFormsClient._ReportPage, {"HiddenZoomLevelId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl_ctl04","StyleElementId":"ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl_styles"}, null, null, $get("ctl00_ContentPlaceHolder1_recieptviewer_ctl09_ReportControl"));
+});
+//]]>
+</script>
+</form>
+</body>
+<script  src='//include/CommonJS.js'></script>
+<script src='//include/krutiDev.js'></script>
+</html>
